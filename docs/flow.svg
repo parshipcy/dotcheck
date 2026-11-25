@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1068 140" role="img" aria-labelledby="title desc">
+  <title id="title">dotcheck pipeline</title>
+  <desc id="desc">You run dotcheck, parse flags, read env files, parseEnv, audit maps, report keys only, then exit 0, 1, or 2.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#737373"/>
+    </marker>
+  </defs>
+
+  <!-- 1 -->
+  <g transform="translate(0,20)">
+    <rect width="132" height="100" rx="14" fill="#f5f5f5"/>
+    <text x="66" y="42" text-anchor="middle" fill="#111111" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600">You run</text>
+    <text x="66" y="66" text-anchor="middle" fill="#525252" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">dotcheck</text>
+  </g>
+  <line x1="134" y1="70" x2="152" y2="70" stroke="#a3a3a3" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 2 -->
+  <g transform="translate(156,20)">
+    <rect width="132" height="100" rx="14" fill="#f5f5f5"/>
+    <text x="66" y="42" text-anchor="middle" fill="#111111" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600">Parse flags</text>
+    <text x="66" y="66" text-anchor="middle" fill="#525252" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">--dir --strict</text>
+  </g>
+  <line x1="290" y1="70" x2="308" y2="70" stroke="#a3a3a3" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 3 -->
+  <g transform="translate(312,20)">
+    <rect width="132" height="100" rx="14" fill="#f5f5f5"/>
+    <text x="66" y="36" text-anchor="middle" fill="#111111" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600">Read files</text>
+    <text x="66" y="58" text-anchor="middle" fill="#525252" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">.env.example</text>
+    <text x="66" y="76" text-anchor="middle" fill="#525252" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">.env</text>
+  </g>
+  <line x1="446" y1="70" x2="464" y2="70" stroke="#a3a3a3" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 4 -->
+  <g transform="translate(468,20)">
+    <rect width="132" height="100" rx="14" fill="#f5f5f5"/>
+    <text x="66" y="42" text-anchor="middle" fill="#111111" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600">parseEnv</text>
+    <text x="66" y="66" text-anchor="middle" fill="#525252" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">KEY = value</text>
+  </g>
+  <line x1="602" y1="70" x2="620" y2="70" stroke="#a3a3a3" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 5 -->
+  <g transform="translate(624,20)">
+    <rect width="132" height="100" rx="14" fill="#f5f5f5"/>
+    <text x="66" y="42" text-anchor="middle" fill="#111111" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600">Audit maps</text>
+    <text x="66" y="66" text-anchor="middle" fill="#525252" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">compare keys</text>
+  </g>
+  <line x1="758" y1="70" x2="776" y2="70" stroke="#a3a3a3" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 6 -->
+  <g transform="translate(780,20)">
+    <rect width="132" height="100" rx="14" fill="#f5f5f5"/>
+    <text x="66" y="42" text-anchor="middle" fill="#111111" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600">Report</text>
+    <text x="66" y="66" text-anchor="middle" fill="#525252" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">keys only</text>
+  </g>
+  <line x1="914" y1="70" x2="932" y2="70" stroke="#a3a3a3" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 7 -->
+  <g transform="translate(936,20)">
+    <rect width="132" height="100" rx="14" fill="#f5f5f5"/>
+    <text x="66" y="42" text-anchor="middle" fill="#111111" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600">Exit</text>
+    <text x="66" y="66" text-anchor="middle" fill="#525252" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12">0 / 1 / 2</text>
+  </g>
+</svg>

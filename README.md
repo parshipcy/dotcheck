@@ -2,7 +2,7 @@
 
 **A CLI that answers one question:** does this project’s `.env` match `.env.example`?
 
-Clone a repo, forget a key, leave `API_KEY=` blank, or sneak in an extra `DEBUG` flag - **dotcheck** will catch it in CI before the app crash. It prints **variable names only**. Secrets will never be in the terminal.
+Clone a repo, forget a key, leave `API_KEY=` blank, or sneak in an extra `DEBUG` flag - **dotcheck** will catch it in CI before the app crash.
 
 ```bash
 npx tsx src/cli.ts --dir .
@@ -14,15 +14,9 @@ node dist/cli.js --dir .
 
 ## How the finished tool flows?
 
-```mermaid
-flowchart LR
-  A["You run: dotcheck"] --> B["Parse flags"]
-  B --> C["Read .env.example + .env"]
-  C --> D["parseEnv"]
-  D --> E["audit: compare maps"]
-  E --> F["report: keys only"]
-  F --> G["exit 0 / 1 / 2"]
-```
+<p align="center">
+  <img src="docs/flow.svg" alt="dotcheck pipeline: run, parse flags, read env files, parseEnv, audit, report keys only, exit 0/1/2" width="100%">
+</p>
 
 1. **Flags:** `--dir`, `--example`, `--env`, `--strict`, `--help`
 2. **Load:** `.env.example` is required (the contract). Missing `.env` is treated as empty (fresh clone).
