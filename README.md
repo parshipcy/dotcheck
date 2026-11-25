@@ -25,10 +25,6 @@ node dist/cli.js --dir .
 5. **Report:** names and kinds (`ERROR missing API_KEY`), never values.
 6. **Exit:** GitHub Actions / any CI can fail the job.
 
----
-
-## Why it works this way
-
 Design choices are recorded in [ADR 0001](docs/adr/0001.md).
 
 ---
