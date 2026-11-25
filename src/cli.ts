@@ -1,6 +1,7 @@
 #!/usr/bin/env node
+import fs from "node:fs";
 import path from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 import { audit } from "./audit.js";
 import { EnvFileError, loadEnvFiles } from "./loadEnvFiles.js";
 import { CliUsageError, HELP_TEXT, parseArgs } from "./parseArgs.js";
@@ -67,7 +68,13 @@ async function main(): Promise<void> {
 function isDirectRun(): boolean {
   const entry = process.argv[1];
   if (entry === undefined) return false;
-  return import.meta.url === pathToFileURL(path.resolve(entry)).href;
+  try {
+    const invoked = fs.realpathSync(entry);
+    const here = fs.realpathSync(fileURLToPath(import.meta.url));
+    return path.normalize(invoked).toLowerCase() === path.normalize(here).toLowerCase();
+  } catch {
+    return false;
+  }
 }
 
 if (isDirectRun()) {
