@@ -4,7 +4,7 @@ import { pathToFileURL } from "node:url";
 import { audit } from "./audit.js";
 import { EnvFileError, loadEnvFiles } from "./loadEnvFiles.js";
 import { CliUsageError, HELP_TEXT, parseArgs } from "./parseArgs.js";
-import type { Finding, ParseIssue } from "./types.js";
+import { formatReport } from "./report.js";
 
 export interface CliIo {
   log: (message: string) => void;
@@ -28,40 +28,27 @@ export async function runCli(
     }
 
     const loaded = await loadEnvFiles(parsed.options);
-    printParseIssues("example", loaded.example.issues, io);
-    printParseIssues("env", loaded.actual.issues, io);
-
-    if (!loaded.envFileExists) {
-      io.log(`Note: ${loaded.envPath} not found; treating as empty.`);
-    }
-
     const result = audit(loaded.example.map, loaded.actual.map, {
       strict: parsed.options.strict,
     });
 
-    io.log(
-      `${path.basename(loaded.examplePath)}  ${result.stats.expectedKeys} keys (${result.stats.optionalExpected} optional)`,
-    );
-    io.log(
-      `${path.basename(loaded.envPath)}  ${result.stats.actualKeys} keys`,
-    );
+    const report = formatReport({
+      examplePath: loaded.examplePath,
+      envPath: loaded.envPath,
+      envFileExists: loaded.envFileExists,
+      exampleIssues: loaded.example.issues,
+      envIssues: loaded.actual.issues,
+      result,
+    });
 
-    if (result.findings.length === 0) {
-      io.log("All environment variables look good.");
-      return 0;
+    for (const line of report.errorLines) {
+      io.error(line);
+    }
+    for (const line of report.lines) {
+      io.log(line);
     }
 
-    for (const finding of result.findings) {
-      io.log(formatFinding(finding));
-    }
-
-    if (result.ok) {
-      io.log("Completed with warnings.");
-      return 0;
-    }
-
-    io.log("Failed: required environment variables are misconfigured.");
-    return 1;
+    return result.ok ? 0 : 1;
   } catch (error) {
     if (error instanceof CliUsageError || error instanceof EnvFileError) {
       io.error(error.message);
@@ -71,21 +58,6 @@ export async function runCli(
     io.error(message);
     return 2;
   }
-}
-
-function printParseIssues(
-  source: string,
-  issues: ParseIssue[],
-  io: CliIo,
-): void {
-  for (const issue of issues) {
-    io.error(`${source} line ${issue.line}: ${issue.kind} (${issue.detail})`);
-  }
-}
-
-function formatFinding(finding: Finding): string {
-  const level = finding.required ? "ERROR" : "WARN";
-  return `${level}  ${finding.kind.padEnd(7)}  ${finding.key}`;
 }
 
 async function main(): Promise<void> {
