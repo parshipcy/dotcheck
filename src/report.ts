@@ -33,7 +33,7 @@ export function formatReport(input: ReportInput): FormattedReport {
     lines.push(`Note: ${envName} not found; treating as empty.`);
   }
 
-  lines.push("Envlens");
+  lines.push("dotcheck");
   lines.push(
     `  ${exampleName}  ${result.stats.expectedKeys} keys (${result.stats.optionalExpected} optional)`,
   );

@@ -16,7 +16,7 @@ describe("runCli", () => {
   beforeEach(async () => {
     logs.length = 0;
     errors.length = 0;
-    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "envlens-cli-"));
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "dotcheck-cli-"));
   });
 
   afterEach(async () => {
@@ -26,7 +26,7 @@ describe("runCli", () => {
   it("prints help and exits 0", async () => {
     const code = await runCli(["--help"], io);
     expect(code).toBe(0);
-    expect(logs.join("\n")).toContain("Usage: envlens");
+    expect(logs.join("\n")).toContain("Usage: dotcheck");
   });
 
   it("exits 0 when configuration is valid", async () => {

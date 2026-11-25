@@ -1,5 +1,5 @@
 /**
- * Kinds of problems envlens can report.
+ * Kinds of problems dotcheck can report.
  * Union = only these four strings are valid.
  */
 export type FindingKind = "missing" | "empty" | "unused";

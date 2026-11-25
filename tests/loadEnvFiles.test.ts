@@ -8,7 +8,7 @@ describe("loadEnvFiles", () => {
   let tempDir: string;
 
   beforeEach(async () => {
-    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "envlens-"));
+    tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "dotcheck-"));
   });
 
   afterEach(async () => {

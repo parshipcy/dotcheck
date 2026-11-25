@@ -49,7 +49,7 @@ export function parseArgs(argv: string[]): ParsedCli {
   return { help: false, options };
 }
 
-export const HELP_TEXT = `Usage: envlens [options]
+export const HELP_TEXT = `Usage: dotcheck [options]
 
 Check that a project's environment variables match .env.example.
 

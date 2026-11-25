@@ -17,7 +17,7 @@ describe("formatReport", () => {
     });
 
     const text = report.lines.join("\n");
-    expect(text).toContain("Envlens");
+    expect(text).toContain("dotcheck");
     expect(text).toContain(".env.example");
     expect(text).toContain("look good");
     expect(report.errorLines).toHaveLength(0);
