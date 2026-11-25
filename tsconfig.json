@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist",
+    "noEmit": true,
     "module": "nodenext",
     "target": "ES2022",
     "lib": ["ES2022"],
+    "types": ["node"],
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,5 +15,5 @@
     "sourceMap": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src"]
+  "include": ["src", "tests"]
 }
