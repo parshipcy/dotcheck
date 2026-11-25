@@ -27,6 +27,12 @@ node dist/cli.js --dir .
 
 ---
 
+## Why it works this way
+
+Design choices are recorded in [ADR 0001](docs/adr/0001.md).
+
+---
+
 ## Install & run
 
 **From this repo**
