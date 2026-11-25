@@ -7,6 +7,7 @@ export interface ParseResult {
   issues: ParseIssue[];
 }
 
+// remove the surrounding quotes
 function unquote(value: string): string {
   const trimmed = value.trim();
   if (
@@ -18,10 +19,12 @@ function unquote(value: string): string {
   return trimmed;
 }
 
+// checks whether the line starts with export
 function stripExportPrefix(line: string): string {
   return line.startsWith("export ") ? line.slice("export ".length) : line;
 }
 
+// returns true when the comment contains optional
 function isOptionalComment(line: string): boolean {
   const body = line.slice(1).trim();
   return /optional/i.test(body);

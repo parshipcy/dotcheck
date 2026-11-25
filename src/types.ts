@@ -42,7 +42,7 @@ export interface AuditResult {
 }
 
 /**
- * CLI / programmatic options (Step 5–6 will use these).
+ * CLI / programmatic options.
  */
 export interface AuditOptions {
   /** Directory containing .env files (default: process.cwd()) */
